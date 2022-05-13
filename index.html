@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REST Country</title>
+
+    <!-- <link rel="shortcut icon" href="src/img/favicon.png" type="image/x-icon" /> -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="spinkit.css">
+    
+    <link rel="stylesheet" href="style.css">
+
+    <script defer type="module" src="controller.js"></script>
+</head>
+
+<body class="light">
+    
+    <!-- NAV BAR -->
+
+    <nav class="nav_view">
+        <p>Where in the world?</p>
+        <p class="mode">
+            <i class="material-icons">dark_mode</i>
+            Dark Mode
+        </p>
+    </nav>
+
+    <!-- APPLICATION -->
+
+    <div class="detail_view" style="display: none;">
+        <div class="back_btn"><i class="material-icons" style="margin-right: 1rem;">arrow_back</i>Back</div>
+
+        <div class="detail_img">
+            <img src="https://flagcdn.com/w320/de.png" alt="flag">
+        </div>
+
+        <p class="detail_name">Belgium</p>
+
+        <div class="detail_content">
+            <p class="detail">Native Name: <span>Belgie</span></p>
+            <p class="detail">Population: <span>11,319,511</span></p>
+            <p class="detail">Region: <span>Europe</span></p>
+            <p class="detail">Sub Region: <span>Western Europe</span></p>
+            <p class="detail">Capital: <span>Brussels</span></p>
+            <p class="detail">Top Level Domain: <span>.be</span></p>
+            <p class="detail">Currencies: <span>Euro</span></p>
+            <p class="detail">Languages: <span>Dutch, French, German</span></p>
+        </div>
+
+        <div class="border">
+            <p class="detail_border">Border Countries:</p>
+            <button class="border_btn">France</button>
+            <button class="border_btn">Germany</button>
+            <button class="border_btn">Netherland</button>
+        </div>
+
+        <!-- <div class="sk-plane"></div> -->
+    </div>
+
+    <!-- SEARCH BAR -->
+
+    <form class="search_view">
+        <div class="search_bar">
+            <button><i class="material-icons">search</i></button>
+            <input type="text" class="search_input" name="country" placeholder="Search for a country...">
+        </div>
+
+        <select name="region" id="filter">
+            <option value="null">Filter by Region</option>
+            <option value="africa">Africa</option>
+            <option value="america">America</option>
+            <option value="asia">Asia</option>
+            <option value="europe">Europe</option>
+            <option value="oceania">Oceania</option>
+        </select>
+    </form>
+
+    <!-- ALL COUNTRY -->
+
+    <div class="country_view">
+
+        <div class="country_card">
+            <a class="card_link" href="#GER">
+                <div class="card_img">
+                    <img src="https://flagcdn.com/w320/de.png" alt="flag">
+                </div>
+
+                <p class="card_name">Germany</p>
+
+                <p class="card_detail">Population: <span>81,770,900</span></p>
+                <p class="card_detail">Region: <span>Europe</span></p>
+                <p class="card_detail">Capital: <span>Berlin</span></p>
+            </a>
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>

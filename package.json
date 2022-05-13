@@ -1,0 +1,29 @@
+{
+  "name": "jscountryproject",
+  "version": "1.0.0",
+  "description": "![Design preview for the REST Countries API with color theme switcher coding challenge](./design/desktop-preview.jpg)",
+  "main": "controller.js",
+  "default": "index.html",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html --dist-dir ./dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/minnphuc/JS-Country-Project.git"
+  },
+  "keywords": [],
+  "author": "Minh Phuc",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/minnphuc/JS-Country-Project/issues"
+  },
+  "homepage": "https://github.com/minnphuc/JS-Country-Project#readme",
+  "devDependencies": {
+    "parcel": "^2.5.0"
+  },
+  "dependencies": {
+    "core-js": "^3.22.5",
+    "regenerator-runtime": "^0.13.9"
+  }
+}
