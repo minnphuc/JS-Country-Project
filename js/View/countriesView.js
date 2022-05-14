@@ -33,6 +33,10 @@ class CountriesView {
   }
 
   _generateMarkupCountryCard(country) {
+    const population = new Intl.NumberFormat("en-US").format(
+      country.population
+    );
+
     return `
     <div class="country_card">
       <a class="card_link" href="#${country.id}">
@@ -42,7 +46,7 @@ class CountriesView {
   
           <p class="card_name">${country.name}</p>
   
-          <p class="card_detail">Population: <span>${country.population}</span></p>
+          <p class="card_detail">Population: <span>${population}</span></p>
           <p class="card_detail">Region: <span>${country.region}</span></p>
           <p class="card_detail">Capital: <span>${country.capital}</span></p>
       </a>
