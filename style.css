@@ -115,7 +115,7 @@ body {
 
 .country_card {
   display: inline-block;
-  width: max-content;
+  width: 26.75rem;
   height: 35rem;
   background-color: var(--element);
   border: none;
@@ -185,7 +185,7 @@ body {
 }
 
 .back_btn:hover {
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
 .detail_img {
@@ -267,4 +267,5 @@ body {
   --bg: var(--dark-blue);
   --element: var(--darker-blue);
   --text: var(--white);
+  --input: var(--white);
 }
