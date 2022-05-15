@@ -10,7 +10,9 @@ class SearchView {
   }
 
   getQuery() {
-    return this._input.value;
+    const query = this._input.value;
+    this._input.value = "";
+    return query;
   }
 }
 

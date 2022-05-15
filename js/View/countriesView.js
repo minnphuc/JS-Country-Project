@@ -1,28 +1,8 @@
-class CountriesView {
+import View from "./View";
+
+class CountriesView extends View {
   _parentElement = document.querySelector(".country_view");
   _data;
-
-  render(data) {
-    this._data = data;
-    const markup = this._generateMarkup();
-    this._clear();
-    this._parentElement.insertAdjacentHTML("afterbegin", markup);
-  }
-
-  renderSpinner() {
-    const markup = `
-    <div class="sk-chase sk-center" style="position: relative; right: 6rem;">
-          <div class="sk-chase-dot"></div>
-          <div class="sk-chase-dot"></div>
-          <div class="sk-chase-dot"></div>
-          <div class="sk-chase-dot"></div>
-          <div class="sk-chase-dot"></div>
-          <div class="sk-chase-dot"></div>
-    </div>
-    `;
-    this._clear();
-    this._parentElement.insertAdjacentHTML("afterbegin", markup);
-  }
 
   addHandlerRenderCountries(handler) {
     window.addEventListener("load", handler);
@@ -52,10 +32,6 @@ class CountriesView {
       </a>
     </div>
     `;
-  }
-
-  _clear() {
-    this._parentElement.innerHTML = "";
   }
 }
 

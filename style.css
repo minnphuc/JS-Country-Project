@@ -251,6 +251,52 @@ body {
   opacity: 0.6;
 }
 
+/* PAGINATION VIEW */
+
+.pagination_view {
+  width: 100%;
+  height: 5rem;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.pagination_btn {
+  padding: 0.6rem 2rem;
+  color: var(--element);
+  background-color: var(--text);
+  font-weight: 600;
+  border: none;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.back {
+  position: absolute;
+  left: 11rem;
+}
+
+.back i {
+  margin-right: 1rem;
+}
+
+.ford {
+  position: absolute;
+  right: 9rem;
+}
+
+.page_num {
+  position: absolute;
+  left: 77rem;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text);
+}
+
 /* PALLETE */
 
 :root {
