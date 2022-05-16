@@ -2,6 +2,7 @@ import * as model from "./model.js";
 import countriesView from "./View/countriesView";
 import searchView from "./View/searchView.js";
 import paginationView from "./View/paginationView.js";
+import countryView from "./View/countryView.js";
 import themeView from "./View/themeView.js";
 
 // Polyfill
@@ -15,7 +16,7 @@ const renderHomePage = function () {
   paginationView.render(model.state.results);
 };
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//? ----CONTROLLER----
 
 const controlCountries = async function () {
   try {
@@ -69,7 +70,25 @@ const controlSearch = function () {
   }, 1000);
 };
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////
+const controlCountryDetail = async function () {
+  try {
+    countriesView.renderSpinner();
+
+    const id = window.location.hash.slice(1);
+
+    await model.loadDetailCountry(id);
+    paginationView.clear();
+    countriesView.clear();
+
+    countryView.render(model.state.country);
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+window.addEventListener("hashchange", controlCountryDetail);
+
+//? ----INITIAL----
 
 const init = function () {
   countriesView.addHandlerRenderCountries(controlCountries);

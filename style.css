@@ -240,11 +240,12 @@ body {
   padding: 1rem 2.3rem;
   border: none;
   border-radius: 0.5rem;
+  color: var(--text);
   background-color: var(--element);
   box-shadow: 0.3px 0.6px 0.6px hsl(0deg 0% 0% / 0.25);
   margin-left: 2rem;
   cursor: pointer;
-  transition: opacity 150ms ease;
+  transition: opacity 200ms ease;
 }
 
 .border_btn:hover {
