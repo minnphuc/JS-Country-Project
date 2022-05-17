@@ -4,7 +4,24 @@ class CountryView extends View {
   _parentElement = document.querySelector(".detail_view");
   _data;
 
+  addHandlerRender(handler) {
+    window.addEventListener("hashchange", handler);
+  }
+
+  addHandlerClick(handler) {
+    this._parentElement.addEventListener("click", function (e) {
+      const backBtn = e.target.closest(".back_btn");
+      if (!backBtn) return;
+
+      handler();
+    });
+  }
+
   _generateMarkup() {
+    const population = new Intl.NumberFormat("en-US").format(
+      this._data.population
+    );
+
     return `
       <div class="back_btn"><i class="material-icons" style="margin-right: 1rem;">arrow_back</i>Back</div>
 
@@ -18,9 +35,7 @@ class CountryView extends View {
           <p class="detail">Native Name: <span>${
             this._data.nativeName
           }</span></p>
-          <p class="detail">Population: <span>${
-            this._data.population
-          }</span></p>
+          <p class="detail">Population: <span>${population}</span></p>
           <p class="detail">Region: <span>${this._data.region}</span></p>
           <p class="detail">Sub Region: <span>${this._data.subRegion}</span></p>
           <p class="detail">Capital: <span>${this._data.capital}</span></p>
@@ -31,13 +46,13 @@ class CountryView extends View {
             this._data.currencies
           }</span></p>
           <p class="detail">Languages: <span>${this._data.languages.join(
-            ","
+            ", "
           )}</span></p>
       </div>
 
       <div class="border">
           <p class="detail_border">Border Countries:</p>
-          ${this._data.borders.map(this._generateMarkupBorder)}
+          ${this._data.borders.map(this._generateMarkupBorder).join("\n")}
       </div>
     `;
   }

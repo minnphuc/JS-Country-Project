@@ -4,7 +4,7 @@ class CountriesView extends View {
   _parentElement = document.querySelector(".country_view");
   _data;
 
-  addHandlerRenderCountries(handler) {
+  addHandlerLoad(handler) {
     window.addEventListener("load", handler);
   }
 

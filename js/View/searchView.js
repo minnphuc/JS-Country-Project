@@ -1,8 +1,10 @@
-class SearchView {
+import View from "./View";
+
+class SearchView extends View {
   _parentElement = document.querySelector(".search_view");
   _input = document.querySelector(".search_input");
 
-  addHandlerQuery(handler) {
+  addHandlerSubmit(handler) {
     this._parentElement.addEventListener("submit", function (e) {
       e.preventDefault();
       handler();

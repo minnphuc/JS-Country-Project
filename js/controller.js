@@ -36,6 +36,8 @@ const controlCountries = async function () {
 };
 
 const controlPagination = function (goToPage) {
+  //? 0. Handling UI
+  paginationView.clear();
   countriesView.renderSpinner();
 
   setTimeout(function () {
@@ -49,6 +51,8 @@ const controlPagination = function (goToPage) {
 
 const controlSearch = function () {
   //? 1. Render spinner
+  paginationView.clear();
+
   countriesView.renderSpinner();
 
   //? 2. Get query value from search bar
@@ -66,34 +70,49 @@ const controlSearch = function () {
   //? 4. Render to view after 1sec
   setTimeout(function () {
     countriesView.render(model.state.results.queryCountries);
-    paginationView.clear();
   }, 1000);
 };
 
 const controlCountryDetail = async function () {
   try {
-    countriesView.renderSpinner();
+    //? 0. Handling UI
+    searchView.hide();
+    countriesView.clear();
+    paginationView.clear();
 
+    countryView.display();
+    countryView.renderSpinner(61);
+
+    //? 1. Take ID from url to fetch API
     const id = window.location.hash.slice(1);
 
+    //? 2. Load country data
     await model.loadDetailCountry(id);
-    paginationView.clear();
-    countriesView.clear();
 
+    //? 3. Render data to view
     countryView.render(model.state.country);
   } catch (err) {
     console.error(err);
   }
 };
 
-window.addEventListener("hashchange", controlCountryDetail);
+const controlBackToHomepage = function () {
+  //? 0. Handling UI
+  searchView.display();
+  countryView.hide();
+  countriesView.renderSpinner();
+
+  renderHomePage();
+};
 
 //? ----INITIAL----
 
 const init = function () {
-  countriesView.addHandlerRenderCountries(controlCountries);
-  searchView.addHandlerQuery(controlSearch);
+  countriesView.addHandlerLoad(controlCountries);
+  searchView.addHandlerSubmit(controlSearch);
   paginationView.addHandlerClick(controlPagination);
+  countryView.addHandlerRender(controlCountryDetail);
+  countryView.addHandlerClick(controlBackToHomepage);
 };
 
 init();

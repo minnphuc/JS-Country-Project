@@ -172,6 +172,9 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  display: grid;
+  grid-template-columns: 80rem 1fr;
+  grid-template-rows: 7rem 40rem 12rem;
 }
 
 .back_btn {
@@ -180,6 +183,7 @@ body {
   margin-bottom: 3rem;
   width: max-content;
   padding: 1rem 3.2rem;
+  color: var(--text);
   background-color: var(--element);
   font-size: 1.6rem;
   font-weight: 600;
@@ -187,17 +191,22 @@ body {
   border-radius: 0.7rem;
   box-shadow: 0.5px 1.2px 1.2px hsl(0deg 0% 0% / 0.45);
   cursor: pointer;
-  transition: opacity 200ms ease;
+  transition: all 200ms ease;
+  grid-column: 1 / span 2;
+  grid-row: 1 / span 1;
 }
 
 .back_btn:hover {
-  opacity: 0.8;
+  opacity: 0.6;
 }
 
 .detail_img {
   float: left;
-  width: 60rem;
+  width: 62rem;
+  height: 40rem;
   margin-right: 17rem;
+  grid-column: 1 / span 1;
+  grid-row: 2 / span 1;
 }
 
 .detail_img img {
@@ -207,49 +216,68 @@ body {
 }
 
 .detail_name {
-  font-size: 3rem;
+  color: var(--text);
+  font-size: 4rem;
   font-weight: 800;
+  transition: all 200ms ease;
+  grid-column: 2 / span 1;
+  grid-row: 2 / span 1;
 }
 
 .detail_content {
-  margin-top: 2rem;
+  margin-top: 6rem;
   font-size: 2.3rem;
+  grid-column: 2 / span 1;
+  grid-row: 2 / span 1;
 }
 
 .detail {
+  color: var(--text);
   margin-top: 0.6rem;
   font-weight: 600;
+  transition: all 200ms ease;
 }
 
 .detail span {
   font-weight: 300;
 }
 
-.detail_border {
-  display: inline-block;
-  font-size: 2rem;
-  margin-top: 2.8rem;
-  font-weight: 800;
+.border {
+  width: 130rem;
+  height: 10rem;
+  line-height: 4.2rem;
+  grid-column: 1 / span 2;
+  grid-row: 3 / span 1;
 }
 
-.border {
-  width: max-content;
+.detail_border {
+  display: inline-block;
+  margin-top: 3.8rem;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text);
+  transition: all 200ms ease;
 }
 
 .border_btn {
   padding: 1rem 2.3rem;
   border: none;
   border-radius: 0.5rem;
+  font-weight: 600;
   color: var(--text);
   background-color: var(--element);
   box-shadow: 0.3px 0.6px 0.6px hsl(0deg 0% 0% / 0.25);
-  margin-left: 2rem;
+  margin-left: 1.5rem;
   cursor: pointer;
-  transition: opacity 200ms ease;
+  transition: all 200ms ease;
 }
 
 .border_btn:hover {
   opacity: 0.6;
+}
+
+.hidden {
+  display: none;
 }
 
 /* PAGINATION VIEW */

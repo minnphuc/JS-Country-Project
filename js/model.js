@@ -3,7 +3,6 @@ import { RES_PER_PAGE } from "./config";
 
 export const state = {
   country: {},
-  bordersCountry: [],
   results: {
     // DATABASE
     countries: [],
@@ -59,45 +58,26 @@ export const searchCountry = function (query) {
 
 //? ----DETAIL COUNTRY VIEW----
 
+const getBorderData = function (borderID) {
+  const borderCountry = state.results.countries.find(
+    country => country.id === borderID
+  );
+
+  return {
+    borderID: borderCountry.id,
+    borderName: borderCountry.name,
+  };
+};
+
 export const loadDetailCountry = async function (id) {
   try {
-    let countryData;
+    const data = await getJSON(`https://restcountries.com/v3.1/alpha/${id}`);
 
-    //? 1. Check if we already have countryData in bordersCountry
+    const [countryData] = data;
 
-    if (state.bordersCountry.some(country => country.cca3 === id)) {
-      const index = state.bordersCountry.findIndex(
-        country => country.cca3 === id
-      );
-
-      countryData = state.bordersCountry[index];
-
-      state.bordersCountry = [];
-    } else {
-      const data = await getJSON(`https://restcountries.com/v3.1/alpha/${id}`);
-
-      [countryData] = data;
-
-      state.bordersCountry = [];
-    }
-
-    //? 2. Fetching border country from countryData
-
-    if (countryData.borders) {
-      for (const border of countryData.borders) {
-        const borderCountry = await getJSON(
-          `https://restcountries.com/v3.1/alpha/${border}`
-        );
-        state.bordersCountry.push(borderCountry[0]);
-      }
-    }
-
-    console.log(state.bordersCountry);
-
-    //? 3. Format countryData
     state.country = {
       id: countryData.cca3,
-      flagImg: countryData.flags.png,
+      flagImg: countryData.flags.svg,
       name: countryData.name.common,
       nativeName: Object.values(countryData.name.nativeName)[0].common,
       population: countryData.population,
@@ -107,16 +87,12 @@ export const loadDetailCountry = async function (id) {
       topLevelDomain: countryData.tld[0],
       currencies: Object.values(countryData.currencies)[0].name,
       languages: Object.values(countryData.languages),
-      borders: state.bordersCountry.map(country => {
-        return {
-          borderID: country.cca3,
-          borderName: country.name.common,
-        };
-      }),
+      borders: countryData.borders
+        ? countryData.borders.map(getBorderData)
+        : [],
     };
 
     console.log(state.country);
-
     // Handle Errors
   } catch (err) {
     console.error(err);

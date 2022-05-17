@@ -6,9 +6,9 @@ export default class View {
     this._parentElement.insertAdjacentHTML("afterbegin", markup);
   }
 
-  renderSpinner() {
+  renderSpinner(rightMargin = 72) {
     const markup = `
-    <div class="sk-chase sk-center" style="position: relative; right: 6rem;">
+    <div class="sk-chase sk-center" style="position: absolute; right: ${rightMargin}rem;">
           <div class="sk-chase-dot"></div>
           <div class="sk-chase-dot"></div>
           <div class="sk-chase-dot"></div>
@@ -19,6 +19,14 @@ export default class View {
     `;
     this.clear();
     this._parentElement.insertAdjacentHTML("afterbegin", markup);
+  }
+
+  display() {
+    this._parentElement.classList.remove("hidden");
+  }
+
+  hide() {
+    this._parentElement.classList.add("hidden");
   }
 
   clear() {
