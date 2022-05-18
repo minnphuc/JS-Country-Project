@@ -21,6 +21,17 @@ export default class View {
     this._parentElement.insertAdjacentHTML("afterbegin", markup);
   }
 
+  renderError(leftMargin, msg = this._errorMsg) {
+    const markup = `
+      <div class="error_msg" style="margin-left: ${leftMargin}rem;">
+        <i class="material-icons">warning</i>
+        <p>${msg}</p>
+      </div>
+    `;
+    this.clear();
+    this._parentElement.insertAdjacentHTML("afterbegin", markup);
+  }
+
   display() {
     this._parentElement.classList.remove("hidden");
   }

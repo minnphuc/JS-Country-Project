@@ -19,7 +19,6 @@ body {
 
 .nav_view {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   width: 100%;
   height: 8rem;
@@ -30,7 +29,12 @@ body {
   transition: all 500ms ease;
 }
 
-.nav_view p:first-child {
+.logo {
+  cursor: pointer;
+  margin-right: 3rem;
+}
+
+.nav_view p:nth-child(2) {
   font-weight: 800;
   font-size: 2.6rem;
 }
@@ -38,6 +42,7 @@ body {
 .mode {
   font-size: 2rem;
   font-weight: 600;
+  margin-left: 83rem;
   cursor: pointer;
 }
 
@@ -326,6 +331,25 @@ body {
   color: var(--text);
 }
 
+/* ERROR MESSAGE */
+
+.error_msg {
+  display: flex;
+  align-items: center;
+  font-size: 3.5rem;
+  font-weight: 600;
+  color: var(--error);
+  transition: all 200ms ease;
+}
+
+.error_msg i {
+  font-size: 5rem;
+}
+
+.error_msg p {
+  margin-left: 2rem;
+}
+
 /* PALLETE */
 
 :root {
@@ -335,6 +359,8 @@ body {
   --dark-gray: hsl(0, 0%, 52%);
   --very-light-gray: hsl(0, 0%, 98%);
   --white: hsl(0, 0%, 100%);
+  --soft-red: #d05663;
+  --bright-orange: #feaa00;
 }
 
 .light {
@@ -342,6 +368,7 @@ body {
   --element: var(--white);
   --text: var(--very-dark-blue);
   --input: var(--dark-gray);
+  --error: var(--soft-red);
 }
 
 .dark {
@@ -349,4 +376,5 @@ body {
   --element: var(--darker-blue);
   --text: var(--white);
   --input: var(--white);
+  --error: var(--bright-orange);
 }

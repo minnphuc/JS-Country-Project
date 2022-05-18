@@ -32,6 +32,7 @@ const controlCountries = async function () {
     // Handle Errors
   } catch (err) {
     console.error(err);
+    countriesView.renderError(20, err);
   }
 };
 
@@ -41,7 +42,7 @@ const controlPagination = function (goToPage) {
   countriesView.renderSpinner();
 
   setTimeout(function () {
-    //? 1. Change current page in state and render NEW countries
+    //? 1. Change current page in state and render NEW page
     countriesView.render(model.getCountriesPage(goToPage));
 
     //? 2. Render NEW pagination button
@@ -52,7 +53,6 @@ const controlPagination = function (goToPage) {
 const controlSearch = function () {
   //? 1. Render spinner
   paginationView.clear();
-
   countriesView.renderSpinner();
 
   //? 2. Get query value from search bar
@@ -68,7 +68,13 @@ const controlSearch = function () {
   model.searchCountry(query);
 
   //? 4. Render to view after 1sec
+
   setTimeout(function () {
+    if (model.state.results.queryCountries.length === 0) {
+      countriesView.renderError(32);
+      return;
+    }
+
     countriesView.render(model.state.results.queryCountries);
   }, 1000);
 };
@@ -85,6 +91,7 @@ const controlCountryDetail = async function () {
 
     //? 1. Take ID from url to fetch API
     const id = window.location.hash.slice(1);
+    if (!id) return;
 
     //? 2. Load country data
     await model.loadDetailCountry(id);
@@ -102,7 +109,8 @@ const controlBackToHomepage = function () {
   countryView.hide();
   countriesView.renderSpinner();
 
-  renderHomePage();
+  //? 1. Render to view
+  setTimeout(renderHomePage, 800);
 };
 
 //? ----INITIAL----

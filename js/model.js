@@ -33,7 +33,7 @@ export const loadCountries = async function () {
 
     // Handle Errors
   } catch (err) {
-    console.error(err);
+    throw err;
   }
 };
 

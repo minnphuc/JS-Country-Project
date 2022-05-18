@@ -3,6 +3,7 @@ import View from "./View";
 class CountriesView extends View {
   _parentElement = document.querySelector(".country_view");
   _data;
+  _errorMsg = "Country not found! Please try again ;)";
 
   addHandlerLoad(handler) {
     window.addEventListener("load", handler);
