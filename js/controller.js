@@ -14,6 +14,7 @@ import "regenerator-runtime/runtime";
 const renderHomePage = function () {
   countriesView.render(model.getCountriesPage());
   paginationView.render(model.state.results);
+  searchView.resetFilterBox();
 };
 
 //? ----CONTROLLER----
@@ -113,6 +114,27 @@ const controlBackToHomepage = function () {
   setTimeout(renderHomePage, 800);
 };
 
+const controlFilterCountries = function () {
+  paginationView.clear();
+  countriesView.renderSpinner();
+
+  //? 1. Get region
+  const region = searchView.getFilterValue();
+
+  //? 2. Filter base on region
+  model.filterCountries(region);
+
+  //? 3. Render to view
+  setTimeout(function () {
+    if (model.state.results.filterCountries.length === 0) {
+      renderHomePage();
+      return;
+    }
+
+    countriesView.render(model.state.results.filterCountries);
+  }, 800);
+};
+
 //? ----INITIAL----
 
 const init = function () {
@@ -121,6 +143,7 @@ const init = function () {
   paginationView.addHandlerClick(controlPagination);
   countryView.addHandlerRender(controlCountryDetail);
   countryView.addHandlerClick(controlBackToHomepage);
+  searchView.addHandlerChange(controlFilterCountries);
 };
 
 init();

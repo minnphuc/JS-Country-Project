@@ -7,6 +7,7 @@ export const state = {
     // DATABASE
     countries: [],
     queryCountries: [],
+    filterCountries: [],
     // PAGINATION
     page: 1,
     resultsPerPage: RES_PER_PAGE,
@@ -97,4 +98,14 @@ export const loadDetailCountry = async function (id) {
   } catch (err) {
     console.error(err);
   }
+};
+
+//? ----FILTER COUNTRIES----
+
+export const filterCountries = function (region) {
+  state.results.page = 1;
+
+  state.results.filterCountries = state.results.countries.filter(
+    country => country.region === region
+  );
 };
