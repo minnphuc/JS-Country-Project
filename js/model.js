@@ -1,4 +1,4 @@
-import { getJSON } from "./helper";
+import { getJSON, checkDataAvailable } from "./helper";
 import { RES_PER_PAGE } from "./config";
 
 export const state = {
@@ -27,10 +27,13 @@ export const loadCountries = async function () {
         name: country.name.common,
         population: country.population,
         region: country.region,
-        capital: country.capital,
+        capital: checkDataAvailable(country.capital),
         flagImg: country.flags.png,
       };
     });
+
+    // Sort countries base on descending population
+    state.results.countries.sort((a, b) => b.population - a.population);
 
     // Handle Errors
   } catch (err) {
@@ -76,24 +79,33 @@ export const loadDetailCountry = async function (id) {
 
     const [countryData] = data;
 
+    console.log(countryData);
+
     state.country = {
       id: countryData.cca3,
       flagImg: countryData.flags.svg,
       name: countryData.name.common,
-      nativeName: Object.values(countryData.name.nativeName)[0].common,
+      nativeName: countryData.name.nativeName
+        ? Object.values(countryData.name.nativeName)[0].common
+        : "None",
+
       population: countryData.population,
       region: countryData.region,
-      subRegion: countryData.subregion,
-      capital: countryData.capital[0],
-      topLevelDomain: countryData.tld[0],
-      currencies: Object.values(countryData.currencies)[0].name,
-      languages: Object.values(countryData.languages),
+      subRegion: checkDataAvailable(countryData.subRegion),
+      capital: checkDataAvailable(countryData.capital),
+      topLevelDomain: checkDataAvailable(countryData.tld),
+
+      currencies: countryData.currencies
+        ? Object.values(countryData.currencies)[0].name
+        : "None",
+      languages: countryData.languages
+        ? Object.values(countryData.languages)
+        : [],
       borders: countryData.borders
         ? countryData.borders.map(getBorderData)
         : [],
     };
 
-    console.log(state.country);
     // Handle Errors
   } catch (err) {
     console.error(err);

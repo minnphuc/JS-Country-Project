@@ -30,7 +30,6 @@ body {
 }
 
 .logo {
-  cursor: pointer;
   margin-right: 3rem;
 }
 
@@ -91,7 +90,7 @@ body {
 
 #filter {
   width: 20rem;
-  margin-left: 67rem;
+  margin-left: 48rem;
   padding: 1.5rem 1.8rem;
   border-radius: 0.4rem;
   border: none;
@@ -99,6 +98,14 @@ body {
   font-weight: 300;
   box-shadow: 0.5px 1px 1px hsl(0deg 0% 0% / 0.4);
   font-size: 1.5rem;
+}
+
+.total {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-left: 2rem;
+  transition: color 200ms ease;
 }
 
 /* ALL COUNTRY VIEW */
@@ -334,12 +341,14 @@ body {
 /* ERROR MESSAGE */
 
 .error_msg {
+  width: max-content;
   display: flex;
   align-items: center;
   font-size: 3.5rem;
   font-weight: 600;
   color: var(--error);
   transition: all 200ms ease;
+  margin: 0 auto;
 }
 
 .error_msg i {

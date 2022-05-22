@@ -21,9 +21,9 @@ export default class View {
     this._parentElement.insertAdjacentHTML("afterbegin", markup);
   }
 
-  renderError(leftMargin, msg = this._errorMsg) {
+  renderError(msg = this._errorMsg) {
     const markup = `
-      <div class="error_msg" style="margin-left: ${leftMargin}rem;">
+      <div class="error_msg">
         <i class="material-icons">warning</i>
         <p>${msg}</p>
       </div>
