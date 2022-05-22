@@ -1,3 +1,14 @@
+/* Config */
+:root {
+  --sk-size: 40px;
+  --sk-color: #333;
+}
+
+/* Utility class for centering */
+.sk-center {
+  margin: auto;
+}
+
 /*  Chase
         <div class="sk-chase">
           <div class="sk-chase-dot"></div>
