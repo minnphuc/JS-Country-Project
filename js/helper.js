@@ -21,3 +21,10 @@ export const getJSON = async function (url) {
     throw err;
   }
 };
+
+export const checkDataAvailable = function (data) {
+  if (data) {
+    return data;
+  }
+  return "None";
+};

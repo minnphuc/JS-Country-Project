@@ -15,6 +15,7 @@ const renderHomePage = function () {
   countriesView.render(model.getCountriesPage());
   paginationView.render(model.state.results);
   searchView.resetFilterBox();
+  searchView.renderTotalCountries(model.state.results.countries);
 };
 
 //? ----CONTROLLER----
@@ -33,7 +34,7 @@ const controlCountries = async function () {
     // Handle Errors
   } catch (err) {
     console.error(err);
-    countriesView.renderError(20, err);
+    countriesView.renderError(err);
   }
 };
 
@@ -72,11 +73,12 @@ const controlSearch = function () {
 
   setTimeout(function () {
     if (model.state.results.queryCountries.length === 0) {
-      countriesView.renderError(32);
+      countriesView.renderError();
       return;
     }
 
     countriesView.render(model.state.results.queryCountries);
+    searchView.renderTotalCountries(model.state.results.queryCountries);
   }, 1000);
 };
 
@@ -104,16 +106,6 @@ const controlCountryDetail = async function () {
   }
 };
 
-const controlBackToHomepage = function () {
-  //? 0. Handling UI
-  searchView.display();
-  countryView.hide();
-  countriesView.renderSpinner();
-
-  //? 1. Render to view
-  setTimeout(renderHomePage, 800);
-};
-
 const controlFilterCountries = function () {
   paginationView.clear();
   countriesView.renderSpinner();
@@ -132,7 +124,18 @@ const controlFilterCountries = function () {
     }
 
     countriesView.render(model.state.results.filterCountries);
+    searchView.renderTotalCountries(model.state.results.filterCountries);
   }, 800);
+};
+
+const controlBackToHomepage = function () {
+  //? 0. Handling UI
+  searchView.display();
+  countryView.hide();
+  countriesView.renderSpinner();
+
+  //? 1. Render to view
+  setTimeout(renderHomePage, 800);
 };
 
 //? ----INITIAL----
