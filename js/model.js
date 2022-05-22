@@ -79,8 +79,6 @@ export const loadDetailCountry = async function (id) {
 
     const [countryData] = data;
 
-    console.log(countryData);
-
     state.country = {
       id: countryData.cca3,
       flagImg: countryData.flags.svg,
