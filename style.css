@@ -108,7 +108,7 @@ body {
   transition: color 200ms ease;
 }
 
-/* ALL COUNTRY VIEW */
+/* COUNTRIES VIEW */
 
 /* a là inline nên ko set được width */
 
@@ -386,4 +386,136 @@ body {
   --text: var(--white);
   --input: var(--white);
   --error: var(--bright-orange);
+}
+
+/* RESPONSIVE DESIGN FOR MOBILE */
+
+@media screen and (max-width: 480px) {
+  /* NAV BAR */
+
+  .nav_view {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    height: 9rem;
+    padding: 1rem;
+  }
+
+  .logo {
+    display: none;
+  }
+
+  .mode {
+    margin: 0;
+  }
+
+  /* SEARCH VIEW */
+
+  .search_view {
+    flex-direction: column;
+    align-items: flex-start;
+    height: max-content;
+    margin-top: 2rem;
+    gap: 2rem;
+  }
+
+  .search_bar {
+    width: 28rem;
+    margin-left: 1rem;
+  }
+
+  #filter {
+    margin: 1 1.9rem;
+  }
+
+  /* COUNTRIES VIEW */
+
+  .country_view {
+    padding: 0.3555rem;
+  }
+
+  .country_card {
+    width: 14rem;
+    height: 20rem;
+    margin-right: 0.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .card_name {
+    font-size: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+  }
+
+  .card_detail {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    margin-left: 1rem;
+  }
+
+  .card_img {
+    width: 14rem;
+    height: 10rem;
+  }
+
+  /* PAGINATION VIEW */
+
+  .pagination_btn {
+    transform: scale(0.7);
+  }
+
+  .back {
+    left: 0rem;
+  }
+
+  .ford {
+    right: 3rem;
+  }
+
+  .page_num {
+    left: 14rem;
+  }
+
+  /* COUNTRY DETAIL VIEW */
+
+  .detail_view {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+    position: unset;
+    transform: unset;
+  }
+
+  .detail_name {
+    font-size: 3rem;
+  }
+
+  .detail_img {
+    width: 26rem;
+    height: auto;
+    margin-right: 0;
+    margin-bottom: 2rem;
+  }
+
+  .detail_content {
+    margin-top: 0;
+    padding: 0 1rem;
+  }
+
+  .border {
+    width: 100%;
+  }
+
+  .detail_border {
+    margin-top: 2rem;
+    margin-left: 1.6rem;
+  }
+
+  .back_btn {
+    transform: scale(0.8);
+    margin-right: 18rem;
+  }
 }

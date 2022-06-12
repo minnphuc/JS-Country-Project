@@ -49,7 +49,7 @@ const controlPagination = function (goToPage) {
 
     //? 2. Render NEW pagination button
     paginationView.render(model.state.results);
-  }, 400);
+  }, 200);
 };
 
 const controlSearch = function () {
@@ -62,32 +62,30 @@ const controlSearch = function () {
 
   // If query === empty string -> Return to home page
   if (!query) {
-    setTimeout(renderHomePage, 1000);
+    renderHomePage();
     return;
   }
 
   //? 3. Search for country from state
   model.searchCountry(query);
 
-  //? 4. Render to view after 1sec
+  //? 4. Render to view
 
-  setTimeout(function () {
-    if (model.state.results.queryCountries.length === 0) {
-      countriesView.renderError();
-      return;
-    }
+  if (model.state.results.queryCountries.length === 0) {
+    countriesView.renderError();
+    return;
+  }
 
-    countriesView.render(model.state.results.queryCountries);
-    searchView.renderTotalCountries(model.state.results.queryCountries);
-  }, 1000);
+  countriesView.render(model.state.results.queryCountries);
+  searchView.renderTotalCountries(model.state.results.queryCountries);
 };
 
 const controlCountryDetail = async function () {
   try {
     //? 0. Handling UI
     searchView.hide();
-    countriesView.clear();
-    paginationView.clear();
+    countriesView.hide();
+    paginationView.hide();
 
     countryView.display();
     countryView.renderSpinner(61);
@@ -117,25 +115,26 @@ const controlFilterCountries = function () {
   model.filterCountries(region);
 
   //? 3. Render to view
-  setTimeout(function () {
-    if (model.state.results.filterCountries.length === 0) {
-      renderHomePage();
-      return;
-    }
 
-    countriesView.render(model.state.results.filterCountries);
-    searchView.renderTotalCountries(model.state.results.filterCountries);
-  }, 800);
+  if (model.state.results.filterCountries.length === 0) {
+    renderHomePage();
+    return;
+  }
+
+  countriesView.render(model.state.results.filterCountries);
+  searchView.renderTotalCountries(model.state.results.filterCountries);
 };
 
 const controlBackToHomepage = function () {
   //? 0. Handling UI
-  searchView.display();
   countryView.hide();
+  searchView.display();
+  countriesView.display();
+  paginationView.display();
   countriesView.renderSpinner();
 
   //? 1. Render to view
-  setTimeout(renderHomePage, 800);
+  renderHomePage();
 };
 
 //? ----INITIAL----
