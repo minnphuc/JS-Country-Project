@@ -56,7 +56,7 @@ export const searchCountry = function (query) {
   state.results.page = 1;
 
   state.results.queryCountries = state.results.countries.filter(country =>
-    country.name.toLowerCase().startsWith(query.toLowerCase())
+    country.name.toLowerCase().includes(query.toLowerCase())
   );
 };
 
