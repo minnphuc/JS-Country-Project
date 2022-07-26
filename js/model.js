@@ -106,7 +106,7 @@ export const loadDetailCountry = async function (id) {
 
     // Handle Errors
   } catch (err) {
-    console.error(err);
+    throw err;
   }
 };
 

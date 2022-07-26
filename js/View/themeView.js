@@ -1,10 +1,15 @@
 class ThemeView {
   _parentElement = document.querySelector("body");
   _modeBtn = document.querySelector(".mode");
+  _logoBtn = document.querySelector(".logo");
 
   constructor() {
     this._initTheme();
     this._addHandlerBtn();
+  }
+
+  _addHandlerLogo(handler) {
+    this._logoBtn.addEventListener("click", handler);
   }
 
   _addHandlerBtn() {

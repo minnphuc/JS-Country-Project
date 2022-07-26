@@ -21,6 +21,10 @@ const renderHomePage = function () {
 //? ----CONTROLLER----
 
 const controlCountries = async function () {
+  const id = window.location.hash;
+
+  if (id) return;
+
   try {
     //? 1. Render spinner
     countriesView.renderSpinner();
@@ -100,7 +104,7 @@ const controlCountryDetail = async function () {
     //? 3. Render data to view
     countryView.render(model.state.country);
   } catch (err) {
-    console.error(err);
+    countryView.renderError();
   }
 };
 
@@ -135,6 +139,10 @@ const controlBackToHomepage = function () {
 
   //? 1. Render to view
   renderHomePage();
+
+  //? 2. Push new URL path
+
+  history.pushState(null, "", "/");
 };
 
 //? ----INITIAL----
@@ -146,6 +154,7 @@ const init = function () {
   countryView.addHandlerRender(controlCountryDetail);
   countryView.addHandlerClick(controlBackToHomepage);
   searchView.addHandlerChange(controlFilterCountries);
+  themeView._addHandlerLogo(controlBackToHomepage);
 };
 
 init();

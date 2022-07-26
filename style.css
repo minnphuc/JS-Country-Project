@@ -31,6 +31,7 @@ body {
 
 .logo {
   margin-right: 3rem;
+  cursor: pointer;
 }
 
 .nav_view p:nth-child(2) {
@@ -288,10 +289,6 @@ body {
   opacity: 0.6;
 }
 
-.hidden {
-  display: none;
-}
-
 /* PAGINATION VIEW */
 
 .pagination_view {
@@ -341,22 +338,19 @@ body {
 /* ERROR MESSAGE */
 
 .error_msg {
-  width: max-content;
-  display: flex;
-  align-items: center;
   font-size: 3.5rem;
   font-weight: 600;
   color: var(--error);
   transition: all 200ms ease;
-  margin: 0 auto;
+  text-align: center;
 }
 
 .error_msg i {
-  font-size: 5rem;
+  font-size: 4rem;
 }
 
-.error_msg p {
-  margin-left: 2rem;
+.hidden {
+  display: none;
 }
 
 /* PALLETE */

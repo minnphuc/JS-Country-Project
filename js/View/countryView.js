@@ -3,6 +3,7 @@ import View from "./View";
 class CountryView extends View {
   _parentElement = document.querySelector(".detail_view");
   _data;
+  _errorMsg = "404 PAGE NOT FOUND";
 
   addHandlerRender(handler) {
     window.addEventListener("hashchange", handler);
